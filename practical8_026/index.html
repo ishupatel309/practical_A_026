@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practical 3A</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #00e6e6;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #00e6e6;
+            border: none;
+            border-radius: 8px;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #00b3b3;
+            transform: scale(1.05);
+        }
+
+        pre {
+            background: black;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>✨ Practical 3A Generator ✨</h2>
+
+    <input type="text" id="symbol" placeholder="Enter Symbol"><br>
+    <input type="number" id="rows" placeholder="Enter Rows"><br>
+
+    <button onclick="generate()">Generate</button>
+
+    <pre id="output"></pre>
+</div>
+
+<script>
+function generate() {
+    let symbol = document.getElementById("symbol").value;
+    let rows = parseInt(document.getElementById("rows").value);
+    let output = "";
+
+    if (!symbol || !rows) {
+        document.getElementById("output").textContent = "Enter all fields!";
+        return;
+    }
+
+    // 1. Inverted Right Half Pyramid
+    output += "Inverted Right Half Pyramid:\n";
+    for (let i = rows; i >= 1; i--) {
+        output += (symbol + " ").repeat(i) + "\n";
+    }
+
+    output += "\n";
+
+    // 2. Full Pyramid
+    output += "Full Pyramid:\n";
+    for (let i = 1; i <= rows; i++) {
+        output += " ".repeat(rows - i) + (symbol + " ").repeat(i) + "\n";
+    }
+
+    output += "\n";
+
+    // 3. Odd Numbers
+    let odd = [];
+    for (let i = 1; i <= 100; i++) {
+        if (i % 2 !== 0) odd.push(i);
+    }
+
+    output += "Odd Numbers (1-100):\n";
+    output += odd.join(", ");
+
+    output += "\n\nMin: " + Math.min(...odd);
+    output += "\nMax: " + Math.max(...odd);
+    output += "\nSum: " + odd.reduce((a,b)=>a+b,0);
+
+    document.getElementById("output").textContent = output;
+}
+</script>
+
+</body>
+</html>
