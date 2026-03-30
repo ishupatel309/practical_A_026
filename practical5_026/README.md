@@ -12,10 +12,10 @@
 ## 🏫 Logos
 
 ### UTU
-![UTU Logo](practical5_026/images/UTUlogo.png)
+![UTU Logo](images/UTUlogo.png)
 
 ### SRIMCA
-![SRIMCA Logo](practical5_026/images/SRIMCAlogo.png)
+![SRIMCA Logo](images/SRIMCAlogo.png)
 
 ---
 
